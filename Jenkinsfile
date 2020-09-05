@@ -13,22 +13,22 @@ node() {
      stage('docker build&push'){
       //sh "docker build -t sampleapp:v3 ."
       sh "docker tag kaushikrahul08/webapp:v3 kaushikrahul08/webapp:v4"
-      sh "docker login -u 'kaushikrahul08' -p 'Dristi@1381' docker.io"
+      sh "docker login -u 'kaushikrahul08' -p '<>' docker.io"
       sh "docker push kaushikrahul08/webapp:v4"
     } 
     
     stage ('login to aks context login ') {
-        //bat "cd C:/Users/rahulsharma "
-        //bat "az aks get-credentials --resource-group RG-AKS --name azkubeclr"
-        //bat "kubectl config get-contexts" 
-        //bat "kubectl config use-context azkubeclr"
+        
+        sh "az aks get-credentials --resource-group AKS-RG --name k8stest"
+        sh "kubectl config get-contexts" 
+        sh "kubectl config use-context k8stest"
         
     }
     
     
       stage ('deployment of pods ') {
-        //bat "kubectl apply -f deployment.yml"
-        //bat "kubectl apply -f balancer-service.yaml"
+        sh "kubectl apply -f deployment.yml"
+        sh "kubectl apply -f balancer-service.yaml"
     }
 
 }
