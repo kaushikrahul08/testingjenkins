@@ -13,7 +13,7 @@ node() {
      stage('docker build&push'){
       //sh "docker build -t sampleapp:v3 ."
       sh "docker tag kaushikrahul08/webapp:v3 kaushikrahul08/webapp:v4"
-      sh "docker login -u "kaushikrahul08" -p "Dristi@1381" docker.io"
+      sh "docker login -u 'kaushikrahul08' -p 'Dristi@1381' docker.io"
       sh "docker push kaushikrahul08/webapp:v4"
     } 
     
